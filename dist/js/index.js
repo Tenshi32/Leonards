@@ -6,7 +6,7 @@ $("#playBtn").on("click", function () {
 
     localStorage.setItem("seeker_categoria", categoria);
     localStorage.setItem("seeker_lang", idioma); // Lo guardamos para la sopa
-    window.location.href = "sopa.html";
+    window.location.href = "/sopa.html";
 });
 
 
@@ -32,7 +32,7 @@ $(document).ready(function () {
     const iniciarJuego = () => {
         const url = $("#difficultySelect").val();
         localStorage.setItem("mathrush_selected", url);
-        window.location.href = url;
+        window.location.href = "/"+url;
     };
 
     $("#playBtnMR").on("click", iniciarJuego);
