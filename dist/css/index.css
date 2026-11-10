@@ -1,0 +1,412 @@
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  /* Organiza en columna */
+  min-height: 100vh;
+  /* Asegura que el body mida toda la pantalla */
+  background: #f4f6f9;
+  padding: 0;
+  /* Quitamos el padding para que el footer pegue abajo */
+  margin: 0;
+}
+
+/* 1. MEJORA DEL ANCHO: Eliminamos el límite tan estricto */
+.container {
+  width: 100%;
+  max-width: 900px;
+  /* Un poco más ancho para que no se vea "delgada" */
+}
+
+.main-card {
+  border: none;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #2047f7 0%, #543474 100%);
+  color: white;
+  border-radius: 20px 20px 0 0;
+  /* Ajustado a la card */
+  padding: 2.5rem 1rem;
+}
+
+.stat-badge {
+  font-size: 0.9rem;
+  padding: 8px 15px !important;
+}
+
+/* 2. MEJORA DEL MODO OSCURO (Legibilidad) */
+.dark-mode,
+.dark-mode body {
+  background-color: #1a1d21 !important;
+  /* Gris carbón en lugar de negro total */
+  color: #f8f9fa !important;
+}
+
+.dark-mode .card {
+  background-color: #24282d !important;
+  /* Un tono más claro que el fondo */
+  color: #f8f9fa !important;
+  border: 1px solid #343a40 !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark-mode .hero-section {
+  /* Gradiente más suave para el modo oscuro */
+  background: linear-gradient(135deg, #527ca5 10%, #a30000 100%);
+  border-bottom: 1px solid #3e444a;
+}
+
+.dark-mode .text-muted {
+  color: #adb5bd !important;
+  /* Evita que el texto muteado desaparezca */
+}
+
+.dark-mode hr {
+  border-top: 1px solid #3e444a;
+}
+
+.dark-mode .form-control {
+  background-color: #2b3035 !important;
+  border-color: #495057 !important;
+  color: white !important;
+}
+
+/* Ajustes extra para elementos de juego en Modo Oscuro */
+.dark-mode .question-box {
+  background: #2b3035 !important;
+  /* Gris oscuro */
+  color: #ffffff !important;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  border: 1px solid #444;
+}
+
+.dark-mode .option-btn {
+  background-color: #24282d !important;
+  border-color: #495057 !important;
+  color: #e6eef8 !important;
+}
+
+.dark-mode .option-btn:hover {
+  background-color: #32383e !important;
+  border-color: #764ba2 !important;
+  color: #ffffff !important;
+}
+
+.dark-mode .option-btn.active {
+  background-color: #764ba2 !important;
+  color: white !important;
+}
+
+.dark-mode .progress-container {
+  background-color: #3e444a;
+  /* Fondo de la barra más apagado */
+}
+
+/* Para que el fondo ocupe toda la pantalla y no se vea blanco abajo */
+.dark-mode {
+  background-color: #1a1d21 !important;
+}
+
+/* Modal en Modo Oscuro */
+.dark-mode .modal-content {
+  background-color: #24282d !important;
+  color: white !important;
+}
+
+.dark-mode .modal-body .bg-light {
+  background: #2b3035 !important;
+  border-color: #444 !important;
+}
+
+.dark-mode .modal-body .text-dark {
+  color: #ffffff !important;
+}
+
+.seeker-grid {
+    display: grid;
+    /* Usamos 1fr para que las columnas se estiren igualitariamente */
+    grid-template-columns: repeat(12, 1fr);
+    gap: 4px;
+    /* Igualamos el fondo de la cuadricula al de las celdas para evitar "recuadros" visibles */
+    background: #222;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #17a2b8;
+    width: 100%; /* Que ocupe el ancho del col-md-9 */
+    max-width: 600px; /* Tamaño máximo para que no se vea gigante en PC */
+    margin: 0 auto;
+}
+
+#wordSearchGrid {
+    touch-action: none; /* Evita que el navegador mueva la pantalla al arrastrar el dedo */
+    user-select: none;  /* Evita que se seleccione texto accidentalmente */
+}
+
+.letter-cell {
+    touch-action: none;
+    -webkit-user-drag: none;
+    aspect-ratio: 1 / 1; /* Esto mantiene las celdas perfectamente cuadradas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #222;
+    color: white;
+    font-weight: bold;
+    font-size: clamp(0.8rem, 2.5vw, 1.2rem); /* El texto se encoge en pantallas pequeñas */
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s;
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 768px) {
+    .seeker-grid {
+        gap: 2px;
+        padding: 5px;
+    }
+    .col-md-3 {
+        margin-bottom: 20px; /* Separa la lista de la sopa en móviles */
+    }
+}
+
+.letter-cell:hover {
+    background: #333;
+    border: 1px solid #17a2b8;
+}
+
+.letter-cell.selected {
+    background: #17a2b8;
+    color: black;
+    transform: none;
+    box-shadow: 0 0 0 3px rgba(23,162,184,0.12) inset;
+}
+
+.letter-cell.found {
+  background: #28a745 !important;
+  color: white;
+}
+
+.list-group-item {
+    background: transparent;
+    color: #ccc;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.list-group-item.completed {
+    text-decoration: line-through;
+    color: #28a745;
+}
+
+
+/* Botones y efectos */
+.btn-play {
+  transition: transform .12s ease, box-shadow .12s ease;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.btn-play:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-play:active {
+  transform: translateY(1px);
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .container {
+    padding: 0;
+  }
+
+  .display-4 {
+    font-size: 2rem;
+  }
+
+  .hero-section {
+    padding: 1.5rem 0.5rem;
+  }
+}
+
+/* Estilos específicos para la experiencia de juego */
+.question-box {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.option-btn {
+  border-radius: 12px !important;
+  margin-bottom: 10px;
+  border: 2px solid #e9ecef !important;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.option-btn:hover {
+  border-color: #764ba2 !important;
+  background-color: #f8f9ff !important;
+  transform: translateX(5px);
+}
+
+.option-btn.active {
+  background-color: #764ba2 !important;
+  color: white !important;
+  border-color: #764ba2 !important;
+}
+
+.progress-container {
+  height: 8px;
+  background-color: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+/* Animación para la pregunta */
+#questionText {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main.flex-fill {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  /* Centra la card verticalmente si hay espacio */
+  justify-content: center;
+  padding: 20px;
+  /* El padding que antes tenía el body */
+}
+
+/* Contenedor del Footer */
+.achievement-footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(40, 40, 40, 0.95);
+  /* Fondo oscuro translúcido */
+  backdrop-filter: blur(10px);
+  padding: 15x 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+}
+
+/* Fila de medallas con separación amplia */
+.medal-row {
+  display: flex;
+  justify-content: center;
+  /* Centra el grupo de medallas */
+  gap: 60px;
+  /* ESPACIO DE SEPARACIÓN ENTRE MEDALLAS */
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+/* Ítem individual */
+.medal-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.medal-wrapper {
+  margin-bottom: 8px;
+}
+
+.medal-icon {
+  font-size: 1.5rem;
+  /* Tamaño grande */
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.medal-icon.locked {
+  color: #333 !important;
+  filter: grayscale(100%);
+  opacity: 0.3;
+}
+
+/* Medalla desbloqueada con brillo */
+.medal-icon.unlocked {
+  opacity: 1 !important;
+  /* Usamos currentColor para que el brillo tome el color que asignamos en JS */
+  filter: drop-shadow(0 0 12px currentColor) !important; 
+  transform: scale(1.2);
+}
+
+/* Nombre de la medalla cuando el padre tiene una medalla desbloqueada */
+.medal-item.active-medal .medal-name {
+  color: #fff !important;
+  text-shadow: 0 0 5px rgba(255,255,255,0.5);
+}
+
+.medal-name {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #888;
+  text-transform: uppercase;
+}
+
+/* Responsivo para celulares: reduce el espacio si no caben */
+@media (max-width: 768px) {
+  .medal-row {
+    gap: 20px;
+  }
+
+  .medal-icon {
+    font-size: 2rem;
+  }
+}
+
+#logroIcono {
+    display: inline-block;
+    animation: popIcon 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite alternate;
+}
+
+@keyframes popIcon {
+    from { transform: scale(1) rotate(-5deg); }
+    to { transform: scale(1.1) rotate(5deg); }
+}
+
+#modalLogro .modal-content {
+    animation: slideUpModal 0.5s ease-out;
+}
+
+@keyframes slideUpModal {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}

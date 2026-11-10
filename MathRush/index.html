@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathRush - Quiz Challenge</title>
+    <link rel="icon" type="image/png" href="dist/img/logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@7.2.0/introjs.min.css">
+    <link rel="stylesheet" href="dist/css/index.css">
+</head>
+
+<body class="hold-transition d-flex flex-column min-vh-100">
+    <main class="flex-fill">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card shadow-lg border-0" style="border-radius: 15px;">
+                        <div class="hero-section py-4 text-center">
+                            <div class="d-flex justify-content-between align-items-center px-3">
+                                <div id="themeContainer">
+                                    <button class="btn btn-sm btn-outline-light rounded-circle" id="themeToggle"
+                                        aria-label="Cambiar tema">
+                                        <i class="bi bi-moon"></i>
+                                    </button>
+                                </div>
+                                <div>
+
+                                    <h1 class="display-4 font-weight-bold mb-0">
+                                        <img src="dist/img/logotipo.png" alt="Logo MathRush" class="responsive-logo"
+                                            style="max-width: 100%;">
+                                    </h1>
+                                    <p class="lead mb-0 text-white-50">¿Qué tan rápido calculas?</p>
+                                </div>
+                                <div>
+                                    <button class="btn btn-sm btn-info rounded-circle" id="helpBtn"><i
+                                            class="bi bi-question-lg"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center mt-3">
+                                <span class="badge badge-warning mx-2 p-2">🏆 Record: <strong
+                                        id="valRecord">0</strong></span>
+                                <span class="badge badge-info mx-2 p-2">💎 Total: <strong
+                                        id="valTotal">0</strong></span>
+                                <span class="badge badge-success mx-2 p-2">⭐ Nivel: <strong
+                                        id="valNivel">1</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-4 text-center">
+                            <button class="btn btn-primary btn-lg btn-block mb-3 rounded-pill shadow btn-play"
+                                id="playBtn" aria-label="Empezar a jugar">
+                                <i class="bi bi-play-fill mr-2" aria-hidden="true"></i> <span>¡EMPEZAR A JUGAR!</span>
+                            </button>
+
+                            <hr>
+
+                            <div class="form-group text-left">
+                                <label class="text-muted small font-weight-bold">DIFICULTAD</label>
+                                <select class="form-control form-control-lg border-primary" id="difficultySelect">
+                                    <option value="level1.html">Principiante (Suma/Resta)</option>
+                                    <option value="level2.html">Intermedio (Multiplicación)</option>
+                                    <option value="level3.html">Experto (Ecuaciones)</option>
+                                    <option value="level4.html">Experto (Jerarquía de Operaciones)</option>
+                                    <option value="level5.html">Leyenda (Números Enteros)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="tutorialModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document" aria-modal="true">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Bienvenido a MathRush</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p>¡Hola! Elige tu nivel y demuestra tu agilidad mental.</p>
+                    <button type="button" class="btn btn-primary btn-block" id="startFromModal">¡Entendido!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intro.js@7.2.0/intro.min.js"></script>
+    <script src="dist/js/index.js"></script>
+
+    <footer class="achievement-footer mt-auto">
+        <div class="container-fluid">
+            <h6 class="text-center text-uppercase mb-4 text-white-50" style="letter-spacing: 3px; font-size: 0.8rem;">
+                Mi Medallero MathRush
+            </h6>
+            <div class="medal-row">
+                <div class="medal-item" id="slot_1">
+                    <div class="medal-wrapper">
+                        <i class="bi bi-plus-circle-fill medal-icon locked"></i>
+                    </div>
+                    <span class="medal-name">Suma</span>
+                </div>
+                <div class="medal-item" id="slot_2">
+                    <div class="medal-wrapper">
+                        <i class="bi bi-x-circle-fill medal-icon locked"></i>
+                    </div>
+                    <span class="medal-name">Multi</span>
+                </div>
+                <div class="medal-item" id="slot_3">
+                    <div class="medal-wrapper">
+                        <i class="bi bi-intersect medal-icon locked"></i>
+                    </div>
+                    <span class="medal-name">Ecuac.</span>
+                </div>
+                <div class="medal-item" id="slot_4">
+                    <div class="medal-wrapper">
+                        <i class="bi bi-lightning-fill medal-icon locked"></i>
+                    </div>
+                    <span class="medal-name">Raíz</span>
+                </div>
+                <div class="medal-item" id="slot_5">
+                    <div class="medal-wrapper">
+                        <i class="bi bi-trophy-fill medal-icon locked"></i>
+                    </div>
+                    <span class="medal-name">Leyenda</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
