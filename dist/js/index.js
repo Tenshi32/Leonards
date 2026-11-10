@@ -32,7 +32,7 @@ $(document).ready(function () {
         window.location.href = url;
     };
 
-    $("#playBtn").on("click", iniciarJuego);
+    $("#playBtnMR").on("click", iniciarJuego);
     $("#startFromModal").on("click", () => {
         $("#tutorialModal").modal("hide");
         iniciarJuego();
