@@ -6,12 +6,15 @@ $("#playBtn").on("click", function () {
 
     localStorage.setItem("seeker_categoria", categoria);
     localStorage.setItem("seeker_lang", idioma); // Lo guardamos para la sopa
-    window.location.href = "SeekerMind/sopa.html";
+    window.location.href = "sopa.html";
 });
 
 
 $(document).ready(function () {
     // 1. Cargar estadísticas iniciales
+
+    document.getElementById("veryBackBtn").onclick = () => (window.location.href = "../");
+
     const stats = {
         record: localStorage.getItem("mathrush_record") || 0,
         nivel: localStorage.getItem("mathrush_nivel") || 1,
@@ -29,7 +32,7 @@ $(document).ready(function () {
     const iniciarJuego = () => {
         const url = $("#difficultySelect").val();
         localStorage.setItem("mathrush_selected", url);
-        window.location.href = "MathRush/"+url;
+        window.location.href = url;
     };
 
     $("#playBtnMR").on("click", iniciarJuego);
@@ -39,10 +42,9 @@ $(document).ready(function () {
     });
 
     // 3. Medallas (Usando el objeto LOGROS si es posible, o el array actual)
-    // 3. Medallas
     const medallasColores = {
         1: "#28a745", // Verde
-        2: "#9155f1", // Púrpura
+        2: "#9155f1", // Purpura
         3: "#fd9845", // Naranja
         4: "#007bff", // Azul
         5: "#eec448", // Dorado
@@ -123,47 +125,3 @@ $(document).ready(function () {
 });
 
 
-const WORD_BANK = {
-    animales: [
-        { es: "ELEFANTE", en: "ELEPHANT" },
-        { es: "TIGRE", en: "TIGER" },
-        { es: "JIRAFA", en: "GIRAFFE" },
-        { es: "CEBRA", en: "ZEBRA" },
-        { es: "LEON", en: "LION" }
-    ],
-    mascotas: [
-        { es: "PERRO", en: "DOG" },
-        { es: "GATO", en: "CAT" },
-        { es: "CONEJO", en: "RABBIT" },
-        { es: "LORO", en: "PARROT" },
-        { es: "HAMSTER", en: "HAMSTER" }
-    ],
-    frutas: [
-        { es: "MANZANA", en: "APPLE" },
-        { es: "PERA", en: "PEAR" },
-        { es: "BANANA", en: "BANANA" },
-        { es: "UVA", en: "GRAPE" },
-        { es: "NARANJA", en: "ORANGE" }
-    ],
-    colores: [
-        { es: "ROJO", en: "RED" },
-        { es: "AZUL", en: "BLUE" },
-        { es: "VERDE", en: "GREEN" },
-        { es: "AMARILLO", en: "YELLOW" },
-        { es: "BLANCO", en: "WHITE" }
-    ],
-    familia: [
-        { es: "MADRE", en: "MOTHER" },
-        { es: "PADRE", en: "FATHER" },
-        { es: "HERMANO", en: "BROTHER" },
-        { es: "ABUELA", en: "GRANDMA" },
-        { es: "PRIMO", en: "COUSIN" }
-    ],
-    profesiones: [
-        { es: "DOCTOR", en: "DOCTOR" },
-        { es: "PILOTO", en: "PILOT" },
-        { es: "MAESTRO", en: "TEACHER" },
-        { es: "PINTOR", en: "PAINTER" },
-        { es: "CHEF", en: "CHEF" }
-    ]
-};

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SeekerMind - Word Search Challenge</title>
-    <link rel="icon" type="image/png" href="../dist/image/logotipo.png">
+    <link rel="icon" type="image/png" href="../dist/image/logo SeekerMind.png">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -20,7 +20,7 @@
                 <div class="col-md-8 col-lg-6">
                     <div class="card shadow-lg border-0" style="border-radius: 15px;">
                         <div class="hero-section py-4 text-center"
-                            style="background: linear-gradient(135deg, #17a2b8 0%, #0056b3 100%);">
+                            style="background: linear-gradient(135deg, rgb(0, 77, 150) 0%, #00b309 100%);">
                             <div class="d-flex justify-content-between align-items-center px-3">
                                 <div id="themeContainer">
                                     <button class="btn btn-sm btn-outline-light rounded-circle" id="themeToggle"
@@ -30,13 +30,14 @@
                                 </div>
                                 <div>
                                     <h1 class="display-4 font-weight-bold mb-0">
-                                        <img src="../dist/image/logotipo.png" alt="Logo SeekerMind" class="responsive-logo"
+                                        <img src="../dist/image/logotipo SeekerMind.png" alt="Logo SeekerMind"
+                                            class="responsive-logo"
                                             style="max-width: 100%; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));">
                                     </h1>
                                     <p class="lead mb-0 text-white-50">¿Qué tan rápido encuentras?</p>
                                 </div>
                                 <div>
-                                    <button class="btn btn-sm btn-info rounded-circle" id="helpBtn">
+                                    <button class="btn btn-sm btn-primary rounded-circle" id="helpBtn">
                                         <i class="bi bi-question-lg"></i>
                                     </button>
                                 </div>
@@ -70,20 +71,26 @@
                                     <option value="profesiones.html">💼 Profesiones</option>
                                 </select>
                             </div>
-                            
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-outline-light btn-sm active">
-                                    <input type="radio" name="langOptions" value="es" checked> ES
-                                </label>
-                                <label class="btn btn-outline-light btn-sm">
-                                    <input type="radio" name="langOptions" value="en"> EN
-                                </label>
+                            <div class="mt-4 d-flex justify-content-between align-items-center">
+
+                                <button class="btn btn-sm btn-link text-muted" id="veryBackBtn">
+                                    <i class="bi bi-box-arrow-left"></i> Salir
+                                </button>
+                                
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-outline-light btn-sm active">
+                                        <input type="radio" name="langOptions" value="es" checked> ES
+                                    </label>
+                                    <label class="btn btn-outline-light btn-sm">
+                                        <input type="radio" name="langOptions" value="en"> EN
+                                    </label>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </main>
 
     <div class="modal fade" id="tutorialModal" tabindex="-1" role="dialog">

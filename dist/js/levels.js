@@ -1,10 +1,5 @@
 // game-logic.js - LA MAQUINARIA GENÉRICA
-// game-logic.js
 function initGame(questionsData, nextLevelNumber) {
-    // 1. Aplicar tema
-    const tema = localStorage.getItem("mathrush_theme") || "light";
-    document.documentElement.classList.toggle("dark-mode", tema === "dark");
-    document.body.classList.toggle("dark-mode", tema === "dark");
 
     let idx = 0, score = 0;
     const questions = questionsData;
@@ -126,58 +121,4 @@ function initGame(questionsData, nextLevelNumber) {
     renderQuestion(idx);
 }
 
-$("#helpBtn").on("click", function () {
-  introJs()
-    .setOptions({
-      nextLabel: "Siguiente",
-      prevLabel: "Atrás",
-      doneLabel: "¡Entendido!",
-      exitOnOverlayClick: false,
-      showStepNumbers: true,
-    })
-    .oncomplete(function () {
-      localStorage.setItem("tour_visto", "true");
-    })
-    .onexit(function () {
-      localStorage.setItem("tour_visto", "true");
-    })
-    .start();
-});
 
-const LOGROS = {
-  1: {
-    id: "medal_1",
-    nombre: "Novato Sumador",
-    icono: "bi-plus-circle-fill",
-    color: "#007bff",
-    desc: "Completaste el Nivel 1",
-  },
-  2: {
-    id: "medal_2",
-    nombre: "Multi-Maestro",
-    icono: "bi-x-circle-fill",
-    color: "#6610f2",
-    desc: "Completaste el Nivel 2",
-  },
-  3: {
-    id: "medal_3",
-    nombre: "X-Ray (Experto)",
-    icono: "bi-intersect",
-    color: "#28a745",
-    desc: "Completaste el Nivel 3",
-  },
-  4: {
-    id: "medal_4",
-    nombre: "Rey de las Raíces",
-    icono: "bi-lightning-fill",
-    color: "#fd7e14",
-    desc: "Completaste el Nivel 4",
-  },
-  5: {
-    id: "medal_5",
-    nombre: "Leyenda Matemática",
-    icono: "bi-trophy-fill",
-    color: "#6f42c1",
-    desc: "Completaste el Nivel 5",
-  },
-};
